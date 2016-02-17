@@ -8,6 +8,7 @@ gem 'rabl'
 gem 'oj'
 gem 'mithril_rails'
 gem 'sprockets-rails', '~> 2.0'
+gem 'slim'
 
 group :development, :test do
   gem 'byebug'
@@ -17,7 +18,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'mithril-query-rails', :path => "/Users/duncan/dev/mithril/mithril-query-rails"
   gem 'teaspoon-jasmine'
-  gem 'jquery-rails'
 end
 
 group :development do
