@@ -17,7 +17,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'mithril-query-rails', :path => "/Users/duncan/dev/mithril/mithril-query-rails"
+  gem 'mithril_node_render_rails', :path => "/Users/duncan/dev/mithril/mithril_node_render_rails/mithril_node_render_rails"
   gem 'teaspoon-jasmine'
+  gem 'jasmine-rails'
 end
 
 group :development do
