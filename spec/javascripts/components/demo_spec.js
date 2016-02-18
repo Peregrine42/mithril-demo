@@ -46,8 +46,7 @@ describe("Demo", function() {
   })
   
   it("turns values between 0 and 1 into columns", function() {
-    var width = 40;
-    var height = 40;
+    var width = 40; var height = 40;
     expect(Demo.columns([0,1, 0.5, 0.2], width, height)).toEqual([
       m("rect", { x: 0,  y: 40, width: 10, height: 0  }),
       m("rect", { x: 10, y: 0,  width: 10, height: 40 }),
