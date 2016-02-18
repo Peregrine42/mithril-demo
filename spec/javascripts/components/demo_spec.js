@@ -30,13 +30,19 @@ describe("Demo", function() {
     jasmine.addMatchers(customMatchers);
   });
   
-  it("can produce a controller that holds the graphs", function() {
-    expect(Demo.controller().graphs).toEqual([])
-  })
-  
   it("has a view method which produces a title", function() {
     var output = Demo.view(Demo.controller())
     $output = mithrilQuery(output)
-    expect($output).toHave('div > h1:contains(Line Graph)')
+    expect($output).toHave('div > h1:contains(Bar Graph)')
+  })
+  
+  it("has some initial data", function() {
+    expect(Demo.controller([0.4,0.3,0.9]).data).toEqual([0.4,0.3,0.9])
+  })
+  
+  it("renders the initial data as a series of svg rects", function() {
+    var output = Demo.view(Demo.controller([0.3]))
+    $output = mithrilQuery(output)
+    expect($output).toHave('div > svg > rect')
   })
 })
