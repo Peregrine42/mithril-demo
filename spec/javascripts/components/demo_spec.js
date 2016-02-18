@@ -13,7 +13,6 @@ var customMatchers = {
         if (result.pass) {
           result.message = "Expected " + actual + " to have " + expected;
         } else {
-          debugger
           html = mithrilNodeRender(actual.rootEl)
           result.message = 
             "Expected " + html + 
@@ -44,5 +43,16 @@ describe("Demo", function() {
     var output = Demo.view(Demo.controller([0.3]))
     $output = mithrilQuery(output)
     expect($output).toHave('div > svg > rect')
+  })
+  
+  it("turns values between 0 and 1 into columns", function() {
+    var width = 40;
+    var height = 40;
+    expect(Demo.columns([0,1, 0.5, 0.2], width, height)).toEqual([
+      m("rect", { x: 0,  y: 40, width: 10, height: 0  }),
+      m("rect", { x: 10, y: 0,  width: 10, height: 40 }),
+      m("rect", { x: 20, y: 20, width: 10, height: 20 }),
+      m("rect", { x: 30, y: 32, width: 10, height: 8  })
+    ])
   })
 })
