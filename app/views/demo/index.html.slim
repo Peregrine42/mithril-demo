@@ -1,4 +1,10 @@
-= mithril_component('Demo', \
+= mithril_component('BarGraph', \
+  base_url: @base_url, \
+  dimensions: @dimensions, 
+  data: @data\
+)
+
+= mithril_component('LineGraph', \
   base_url: @base_url, \
   dimensions: @dimensions, 
   data: @data\

@@ -1,12 +1,12 @@
 //= require mithril
 
-var Demo = {
+var BarGraph = {
   controller: function() {
-    Demo.properties || (Demo.properties = Demo.getDefaults());
+    BarGraph.properties || (BarGraph.properties = BarGraph.getDefaults());
     return { 
-      data: Demo.properties.data || [],
-      width: Demo.properties.dimensions.width,
-      height: Demo.properties.dimensions.height
+      data: BarGraph.properties.data,
+      width: BarGraph.properties.dimensions.width,
+      height: BarGraph.properties.dimensions.height
     }
   },
   getDefaults: function() {
@@ -28,15 +28,15 @@ var Demo = {
   },
   columns: function(data, width, height){
     return data.map(function(datum, index) {
-      return Demo.column(datum, data, index, width, height); 
+      return BarGraph.column(datum, data, index, width, height); 
     });
   },
   view: function(ctrl) {
     return m('div', [
       m('h1', ['Bar Graph']),
-      m('div', { style: { width: "600px", height: "300px" } }, [
+      m('div', [
         m('svg', { width: ctrl.width + "px", height: ctrl.height +"px" }, 
-          Demo.columns(ctrl.data, ctrl.width, ctrl.height)
+          BarGraph.columns(ctrl.data, ctrl.width, ctrl.height)
         )
       ])
     ])

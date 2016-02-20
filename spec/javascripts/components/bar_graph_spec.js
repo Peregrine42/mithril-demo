@@ -2,33 +2,33 @@
 //= require mithril_node_render
 //= require mithril_matchers
 
-describe("Demo", function() {
+describe("BarGraph", function() {
   beforeEach(function() {
     jasmine.addMatchers(mithrilMatchers);
-    Demo.properties = Demo.getDefaults();
+    BarGraph.properties = BarGraph.getDefaults();
   });
   
   it("has a view method which produces a title", function() {
-    var output = Demo.view(Demo.controller())
+    var output = BarGraph.view(BarGraph.controller())
     $output = mithrilQuery(output)
     expect($output).toHave('div > h1:contains(Bar Graph)')
   })
   
   it("has some initial data", function() {
-    Demo.properties.data = [0.4,0.3,0.9];
-    expect(Demo.controller().data).toEqual([0.4,0.3,0.9])
+    BarGraph.properties.data = [0.4,0.3,0.9];
+    expect(BarGraph.controller().data).toEqual([0.4,0.3,0.9])
   })
   
   it("renders the initial data as a series of svg rects", function() {
-    Demo.properties.data = [0.3];
-    var output = Demo.view(Demo.controller())
+    BarGraph.properties.data = [0.3];
+    var output = BarGraph.view(BarGraph.controller())
     $output = mithrilQuery(output)
     expect($output).toHave('div > svg > rect')
   })
   
   it("turns values between 0 and 1 into columns", function() {
     var width = 40; var height = 40;
-    expect(Demo.columns([0, 1, 0.5, 0.2], width, height)).toEqual([
+    expect(BarGraph.columns([0, 1, 0.5, 0.2], width, height)).toEqual([
       m("rect", { x: 0,  y: 40, width: 10, height: 0  }),
       m("rect", { x: 10, y: 0,  width: 10, height: 40 }),
       m("rect", { x: 20, y: 20, width: 10, height: 20 }),
