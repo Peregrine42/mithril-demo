@@ -1,11 +1,18 @@
 //= require mithril
 
 var Demo = {
-  controller: function(data, dimensions) {
+  controller: function() {
+    Demo.properties || (Demo.properties = Demo.getDefaults());
     return { 
       data: Demo.properties.data || [],
       width: Demo.properties.dimensions.width,
       height: Demo.properties.dimensions.height
+    }
+  },
+  getDefaults: function() {
+    return {
+      data: [],
+      dimensions: { width: 0, height: 0 }
     }
   },
   column: function(datum, data, index, width, height) {
@@ -14,8 +21,7 @@ var Demo = {
     var columnWidth = width / data.length;
     var columnHeight = height * datum;
     return m("rect", 
-      { style: {stroke: "#000", fill: "#0086b2" },
-        x: x, 
+      { x: x, 
         y: y, 
         width: columnWidth, 
         height: columnHeight });
